@@ -36,20 +36,18 @@ Let's walk through it.
 
 ## Seven Steps to UI-Router - Codealong (40 mins)
 
-Because of the nature of what we're building today - our URL will be telling our application what particular views to render - we can't just open our file with ``file://`` anymore. We'll have to load up a quick server to render our initial HTML file.
+> Note: Because Angular uses AJAX calls to load HTML templates dynamically, we can't just open our file with ``file://`` anymore. We'll have to fire up a quick HTTP server to serve up our Web Application.
 
-Let's use a simple python command - already built into your computer - that runs a http-server.  Navigate to our starter app folder and run:
+We can use `http-server` as a simple HTTP server. You can install it with:
 
 ```bash
-$ python -m SimpleHTTPServer
+$ npm install -g http-server
 ```
 
-From now on, rather than opening the HTML file directly, we can navigate to ``http://0.0.0.0:8000`` or ``http://localhost:8080``.
-
-**Note:** There are other libraries to do this, one being the npm package `http-server` that you can install with:
+Then you can run `http-server` with:
 
 ```bash
-$ npm install http-server .
+http-server -c-1      # -c-1 means no browser caching!!!
 ```
 
 #### Step One: UI-Router
@@ -107,14 +105,13 @@ Let's add on to it:
 // in app.js
 angular
   .module('todoApp', ['ui.router']);
-  .config(MainRouter);
+  .config(routerConfig);
 ```
 
-Of course, now we need a ``MainRouter()`` function, so let's build one:
+Of course, now we need a ``routerConfig()`` function, so let's build one:
 
 ```javascript
-MainRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
-function MainRouter($stateProvider, $urlRouterProvider) {
+function routerConfig($stateProvider, $urlRouterProvider) {
   // ROUTE
 }
 ```
@@ -126,7 +123,7 @@ The arguments in the function are necessary parts for our router to do its work,
 When using Angular, we're not really changing locations (single-page apps, here), lets, instead of calling them _routes_, call them **states**. Same idea as routes, but we're just trying to be more descriptive. We're changing the current _state_ of the app, as in a snapshot of the stuff we're looking at and working with, at a particular moment.
 
 ```javascript
-function MainRouter($stateProvider, $urlRouterProvider) {
+function routerConfig($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/",
@@ -150,7 +147,7 @@ Now, before our route can work, we've got to extract some of our view into that 
 Let's also add a catch-all to ensure that we route to the home if a state is not found:
 
 ```javascript
-function MainRouter($stateProvider, $urlRouterProvider) {
+function routerConfig($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/",
@@ -194,7 +191,7 @@ Of course, that's exactly what we were looking at before, but _now_, we have the
 So let's make things interesting and add another state in here. Let's make a state for when we're looking at an archived list. In `app.js`:
 
 ```javascript
-function MainRouter($stateProvider, $urlRouterProvider) {
+function routerConfig($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: "/",

@@ -1,8 +1,8 @@
 angular
 	.module('todoApp', ['ui.router'])
-	.config(MainRouter);
+	.config(routerConfig);
 
-function MainRouter($stateProvider, $urlRouterProvider){
+function routerConfig($stateProvider, $urlRouterProvider){
 	$stateProvider
 		.state('home', {
 			url: "/",
