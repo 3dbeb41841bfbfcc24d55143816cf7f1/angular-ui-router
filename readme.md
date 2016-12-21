@@ -62,7 +62,7 @@ Assuming the latter, let's make sure our script tag is _after_ including Angular
 <script src="js/angular.js"></script>
 
 <!-- new router script -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>
 <!-- end new router script -->
 
 <script src="js/main.js"></script>

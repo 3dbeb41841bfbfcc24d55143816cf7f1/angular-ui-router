@@ -33,7 +33,7 @@ angular
 		//returns a count of the tasks that have been marked as done
 		function completedTodos(){
 			return self.todoList.filter(function(x){ 
-				return x.done == true; 
+			  return x.done == true;
 			});
 		}
 
